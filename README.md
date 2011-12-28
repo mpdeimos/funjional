@@ -40,7 +40,7 @@ The goal of *funjional* is not only to provide a concept for defining lambda exp
 I got that, but for now functions do only accept one argument -- how can I pass more than one argument?
 Well, the simple answer is *you cannot*!
 The long answer: *Tuple your arguments!*
-*funjional* provides a concept for tuppling objects into `$` containers. The simplest container is `$1` which can be created by `$1 z = $.$(someObject)`. The object can be accessed by `z.a`. A `$1` is pretty useless, so the more interesting ones are `$2`, `$3` and so on. Creation is similar -- `$2 z2 = $.$(someObject, someOtherObject)`. Of course Zip containers are typesafe, so `$.$(1, "foo")` will yield a `$2<Integer,String>` with its members being accessible via `z2.a` and `z2.b`.
+*funjional* provides a concept for tuppling objects into `$` containers. The simplest container is `$1` which can be created by `$1 z = $.$(someObject)`. The object can be accessed by `z.a`. A `$1` is pretty useless, so the more interesting ones are `$2`, `$3` and so on. Creation is similar -- `$2 z2 = $.$(someObject, someOtherObject)`. Of course Tuples are typesafe, so `$.$(1, "foo")` will yield a `$2<Integer,String>` with its members being accessible via `z2.a` and `z2.b`.
 
 ### Example
 
@@ -98,4 +98,4 @@ Most Array functions can also be used with variable arguments. So `_.foldLeft(Fu
 Help Developing
 ===============
 
-With *funjional* being an open-source project, I encourage anyone to take part in development. Just fork this repository and add deliver back pull requests.
+With *funjional* being an open-source project, I encourage anyone to take part in development. Just fork this repository and deliver back pull requests.
