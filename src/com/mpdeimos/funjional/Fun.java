@@ -4,7 +4,8 @@ import com.mpdeimos.funjional.compliance.Accumulation;
 import com.mpdeimos.funjional.compliance.Function;
 
 /**
- * Function library.
+ * Function library. This library makes use of the java standard-complaint
+ * classes.
  * 
  * @author mpdeimos
  * 

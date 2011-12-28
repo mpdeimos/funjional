@@ -2,15 +2,17 @@ package com.mpdeimos.funjional;
 
 import static org.junit.Assert.assertEquals;
 
+import com.mpdeimos.funjional.$.$2;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-import com.mpdeimos.funjional.$.$2;
-
+/** Tests for static underscore functions. */
 public class StaticTest
 {
+	/** Tests the folding direction of fold left. */
 	@Test
 	public void testFoldLeftDirection()
 	{
@@ -18,7 +20,7 @@ public class StaticTest
 		_.foldLeft(new __<$2<Integer[], Integer>, Integer>()
 		{
 			@Override
-			public $2<Integer[], Integer> $($2<Integer[], Integer> acc,
+			public $2<Integer[], Integer> __($2<Integer[], Integer> acc,
 					Integer o)
 			{
 				acc.a[o] = acc.b;
@@ -34,6 +36,7 @@ public class StaticTest
 		}
 	}
 
+	/** Tests the folding direction of fold right. */
 	@Test
 	public void testFoldRightDirection()
 	{
@@ -41,7 +44,7 @@ public class StaticTest
 		_.foldRight(new __<$2<Integer[], Integer>, Integer>()
 		{
 			@Override
-			public $2<Integer[], Integer> $($2<Integer[], Integer> acc,
+			public $2<Integer[], Integer> __($2<Integer[], Integer> acc,
 					Integer o)
 			{
 				acc.a[o] = acc.b;
@@ -57,6 +60,7 @@ public class StaticTest
 		}
 	}
 
+	/** Tests fold right behavior. */
 	@Test
 	public void testFoldRight()
 	{
@@ -70,7 +74,7 @@ public class StaticTest
 		assertEquals(45, _.foldRight(new __<Double, Integer>()
 		{
 			@Override
-			public Double $(Double acc, Integer o)
+			public Double __(Double acc, Integer o)
 			{
 				return acc + o;
 			}
@@ -83,6 +87,7 @@ public class StaticTest
 				(int) _.foldRight(Fun.ADD(Integer.class), 0, 1, 2, 3, 4));
 	}
 
+	/** Tests mapping behavior. */
 	@Test
 	public void testMap()
 	{
@@ -109,6 +114,7 @@ public class StaticTest
 		}
 	}
 
+	/** Tests self-mapping behavior. */
 	@Test
 	public void testMapSelf()
 	{

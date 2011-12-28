@@ -57,13 +57,13 @@ The long answer: *Tuple your arguments!*
 
 ### The mighty fold
 
-`fold` uses a special version of the `_` class with generic signature `_<R, Zip.Zip2<R, O>>` to provide an accumulator. For more convenient writing *funjional* delivers a subclass `__<R, O>` (note the double underscore) with an abstract method `public abstract R _(R acc, O o);` to be implemented by you.
+`fold` uses a special version of the `_` class with generic signature `_<R, $.$2<R, O>>` to provide an accumulator. For more convenient writing *funjional* delivers a subclass `__<R, O>` (note the double underscore) with an abstract method `public abstract R __(R acc, O o);` to be implemented by you.
 
 	// yields 10
 	int sum = _.foldRight(new __<Integer, Integer>()
 	{
 		@Override
-		public Integer _(Integer acc, Integer o)
+		public Integer __(Integer acc, Integer o)
 		{
 			return acc+o;
 		}
@@ -73,6 +73,27 @@ The long answer: *Tuple your arguments!*
 
 *funjional* also includes a function library being accessible via static methods of the class `Fun`.
 
+### Compliance mode
+
+*funjional* uses non-standard Java notation of classnames (`_`, `$`) or using functions with the same name as a constructor (`_._()`, `$.$()`).
+So there exists a compliance API with the following mapping:
+
+ * `_` -- `Function`
+ * `_._()` -- `Function.call()`
+ * `__` -- `Accumulation`
+ * `__.__()` -- `Accumulation.call()`
+ * `$` -- `Tuple`
+ * `$.$()` -- `Tuple.create()`
+ * `$1` -- `Tuple1`
+ * `$2` -- `Tuple2`
+ * `$3` -- `Tuple3`
+ * `$4` -- `Tuple4`
+
+### Gimmicks
+
+#### Variable arguments
+
+Most Array functions can also be used with variable arguments. So `_.foldLeft(Fun.ADD(Integer.class), 0, new Integer[]{1,2,3});` is identical to the less verbose `_.foldLeft(Fun.ADD(Integer.class), 0, 1,2,3);`.
 
 Help Developing
 ===============

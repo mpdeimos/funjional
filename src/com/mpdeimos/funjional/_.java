@@ -176,7 +176,7 @@ public abstract class _<R, O>
 		return foldLeft(new __<C, O>()
 		{
 			@Override
-			public C $(C acc, O o)
+			public C __(C acc, O o)
 			{
 				acc.add(_._(o));
 				return acc;
@@ -210,7 +210,7 @@ public abstract class _<R, O>
 		return foldLeft(new __<$2<L, Integer>, O>()
 		{
 			@Override
-			public $2<L, Integer> $($2<L, Integer> acc, O o)
+			public $2<L, Integer> __($2<L, Integer> acc, O o)
 			{
 				if (acc.a.size() > acc.b)
 				{

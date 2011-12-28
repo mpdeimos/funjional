@@ -17,7 +17,7 @@ public abstract class __<R, O> extends _<R, $.$2<R, O>>
 	@Override
 	public final R _($2<R, O> o)
 	{
-		return $(o.a, o.b);
+		return __(o.a, o.b);
 	}
 
 	/**
@@ -29,5 +29,5 @@ public abstract class __<R, O> extends _<R, $.$2<R, O>>
 	 *            The current object.
 	 * @return the new accumulator.
 	 */
-	public abstract R $(R acc, O o);
+	public abstract R __(R acc, O o);
 }
