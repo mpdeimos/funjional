@@ -2,14 +2,14 @@ package com.mpdeimos.funjional;
 
 import static org.junit.Assert.assertEquals;
 
-import com.mpdeimos.funjional.$.$2;
+import com.mpdeimos.funjional._._2;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-/** Tests for static underscore functions. */
+/** Tests for static $ functions. */
 public class StaticTest
 {
 	/** Tests the folding direction of fold left. */
@@ -17,10 +17,10 @@ public class StaticTest
 	public void testFoldLeftDirection()
 	{
 		Integer[] ints = new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		_.foldLeft(new __<$2<Integer[], Integer>, Integer>()
+		$.foldLeft(new $$<_2<Integer[], Integer>, Integer>()
 		{
 			@Override
-			public $2<Integer[], Integer> __($2<Integer[], Integer> acc,
+			public _2<Integer[], Integer> $(_2<Integer[], Integer> acc,
 					Integer o)
 			{
 				acc.a[o] = acc.b;
@@ -28,7 +28,7 @@ public class StaticTest
 				return acc;
 			}
 
-		}, $.$(ints, 0), ints);
+		}, _._(ints, 0), ints);
 
 		for (int i = 0; i < ints.length; i++)
 		{
@@ -41,10 +41,10 @@ public class StaticTest
 	public void testFoldRightDirection()
 	{
 		Integer[] ints = new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		_.foldRight(new __<$2<Integer[], Integer>, Integer>()
+		$.foldRight(new $$<_2<Integer[], Integer>, Integer>()
 		{
 			@Override
-			public $2<Integer[], Integer> __($2<Integer[], Integer> acc,
+			public _2<Integer[], Integer> $(_2<Integer[], Integer> acc,
 					Integer o)
 			{
 				acc.a[o] = acc.b;
@@ -52,7 +52,7 @@ public class StaticTest
 				return acc;
 			}
 
-		}, $.$(ints, 0), ints);
+		}, _._(ints, 0), ints);
 
 		for (int i = 0; i < ints.length; i++)
 		{
@@ -71,20 +71,20 @@ public class StaticTest
 			ints.add(i);
 		}
 
-		assertEquals(45, _.foldRight(new __<Double, Integer>()
+		assertEquals(45, $.foldRight(new $$<Double, Integer>()
 		{
 			@Override
-			public Double __(Double acc, Integer o)
+			public Double $(Double acc, Integer o)
 			{
 				return acc + o;
 			}
 		}, 0.0, ints), 0.1);
 
-		assertEquals(45, (int) _.foldRight(Fun.ADD(Integer.class), 0, ints));
-		assertEquals(45, (int) _.foldRight(Fun.ADD(Integer.class), 0, intArray));
+		assertEquals(45, (int) $.foldRight(Fun.ADD(Integer.class), 0, ints));
+		assertEquals(45, (int) $.foldRight(Fun.ADD(Integer.class), 0, intArray));
 		assertEquals(
 				10,
-				(int) _.foldRight(Fun.ADD(Integer.class), 0, 1, 2, 3, 4));
+				(int) $.foldRight(Fun.ADD(Integer.class), 0, 1, 2, 3, 4));
 	}
 
 	/** Tests mapping behavior. */
@@ -97,10 +97,10 @@ public class StaticTest
 			ints.add(i);
 		}
 
-		List<Double> intsPlus1dot5 = _.map(new _<Double, Integer>()
+		List<Double> intsPlus1dot5 = $.map(new $<Integer, Double>()
 		{
 			@Override
-			public Double _(Integer o)
+			public Double $(Integer o)
 			{
 				return o + 1.5;
 			}
@@ -120,10 +120,10 @@ public class StaticTest
 	{
 		// also tests buffer writing
 
-		Integer[] ints = _.mapSelf(new _<Integer, Integer>()
+		Integer[] ints = $.mapSelf(new $<Integer, Integer>()
 		{
 			@Override
-			public Integer _(Integer o)
+			public Integer $(Integer o)
 			{
 				return o + 1;
 			}

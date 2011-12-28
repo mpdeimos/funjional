@@ -1,326 +1,89 @@
 package com.mpdeimos.funjional;
 
-import com.mpdeimos.funjional.$.$2;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-
 /**
- * Lambda function class. Shorthand notation with underscores for class name and
- * function call.
+ * Tuple class.
  * 
  * @author mpdeimos
  * 
- * @param <R>
- *            The return type
- * @param <O>
- *            The function argument type
  */
-public abstract class _<R, O>
+public abstract class _
 {
-	/**
-	 * The lambda function implementation.
-	 * 
-	 * @param o
-	 *            the function argument of type O
-	 * @return an object of type R
-	 */
-	public abstract R _(O o);
-
-	/**
-	 * @return The Class of return type R.
-	 */
-	@SuppressWarnings("unchecked")
-	public Class<R> getReturnType()
+	/** @return a $1. */
+	public static <A> _1<A> _(A a)
 	{
-		return (Class<R>) Utils.getGenericType(this, _.class, 0);
+		return new _1<A>(a);
 	}
 
-	/**
-	 * @return The Class of argument type O.
-	 */
-	@SuppressWarnings("unchecked")
-	public Class<O> getArgumentType()
+	/** @return a $2. */
+	public static <A, B> _2<A, B> _(A a, B b)
 	{
-		return (Class<O>) Utils.getGenericType(this, _.class, 1);
+		return new _2<A, B>(a, b);
 	}
 
-	// / FOLD LEFT / //
-
-	/**
-	 * Folds over an Iterable of type O from the left (natural order, index 0 to
-	 * index n).
-	 * 
-	 * @param <R>
-	 *            The lambda function return type.
-	 * @param <O>
-	 *            The lambda function argument type.
-	 * @param _
-	 *            The lambda function $(R, O) -> R
-	 * @param acc
-	 *            The accumulator (initial value)
-	 * @param os
-	 *            The Iterable of type O
-	 * @return and element of type R.
-	 */
-	public static <R, O> R foldLeft(
-			_<R, $.$2<R, O>> _,
-			R acc,
-			Iterable<O> os)
+	/** @return a $3. */
+	public static <A, B, C> _3<A, B, C> _(A a, B b, C c)
 	{
-		for (O o : os)
+		return new _3<A, B, C>(a, b, c);
+	}
+
+	/** @return a $4. */
+	public static <A, B, C, D> _4<A, B, C, D> _(A a, B b, C c, D d)
+	{
+		return new _4<A, B, C, D>(a, b, c, d);
+	}
+
+	/** Tuple with one element. */
+	public static class _1<A> extends _
+	{
+		/** The first element. */
+		public A a;
+
+		/** private Constructor. */
+		protected _1(A a)
 		{
-			acc = _._($.$(acc, o));
+			this.a = a;
 		}
-
-		return acc;
 	}
 
-	/**
-	 * Folds over an Array of type O from the left (natural order, index 0 to
-	 * index n).
-	 * 
-	 * @param <R>
-	 *            The lambda function return type.
-	 * @param <O>
-	 *            The lambda function argument type.
-	 * @param _
-	 *            The lambda function $(R, O) -> R
-	 * @param acc
-	 *            The accumulator (initial value)
-	 * @param os
-	 *            The Array of type O
-	 * @return and element of type R.
-	 */
-	public static <R, O> R foldLeft(_<R, $.$2<R, O>> _, R acc, O... os)
+	/** Tuple with two elements. */
+	public static class _2<A, B> extends _1<A>
 	{
-		return foldLeft(_, acc, Arrays.asList(os));
-	}
+		/** The second element. */
+		public B b;
 
-	// / FOLD RIGHT ///
-
-	/**
-	 * Folds over an Iterable of type O from the right (reverse order, index n
-	 * to index 1).
-	 * 
-	 * @param <R>
-	 *            The lambda function return type.
-	 * @param <O>
-	 *            The lambda function argument type.
-	 * @param _
-	 *            The lambda function $(R, O) -> R
-	 * @param acc
-	 *            The accumulator (initial value)
-	 * @param os
-	 *            The Iterable of type O
-	 * @return and element of type R.
-	 */
-	public static <R, O> R foldRight(_<R, $.$2<R, O>> _, R acc, List<O> os)
-	{
-		for (int i = os.size() - 1; i >= 0; --i)
+		/** private Constructor. */
+		protected _2(A a, B b)
 		{
-			acc = _._($.$(acc, os.get(i)));
+			super(a);
+			this.b = b;
 		}
-
-		return acc;
 	}
 
-	/**
-	 * Folds over an Array of type O from the right (reverse order, index n to
-	 * index 0).
-	 * 
-	 * @param <R>
-	 *            The lambda function return type.
-	 * @param <O>
-	 *            The lambda function argument type.
-	 * @param _
-	 *            The lambda function $(R, O) -> R
-	 * @param acc
-	 *            The accumulator (initial value)
-	 * @param os
-	 *            The Array of type O
-	 * @return and element of type R.
-	 */
-	public static <R, O> R foldRight(_<R, $.$2<R, O>> _, R acc, O... os)
+	/** Tuple with three elements. */
+	public static class _3<A, B, C> extends _2<A, B>
 	{
-		return foldRight(_, acc, Arrays.asList(os));
-	}
+		/** The third element. */
+		public C c;
 
-	// / MAP ///
-
-	/**
-	 * Maps the elements of an Iterable into a new Collection.
-	 * 
-	 * @param <R>
-	 *            The mapping type.
-	 * @param <O>
-	 *            The Iterable type.
-	 * @param <C>
-	 *            The buffer collection type.
-	 * @param _
-	 *            The mapping function O -> R
-	 * @param buffer
-	 *            The buffer to map into.
-	 * @param os
-	 *            The Iterable to map.
-	 * @return A collection of type C with elements mapped from os.
-	 */
-	public static <R, O, C extends Collection<R>> C map(
-			final _<R, O> _,
-			C buffer,
-			Iterable<O> os)
-	{
-		return foldLeft(new __<C, O>()
+		/** private Constructor. */
+		protected _3(A a, B b, C c)
 		{
-			@Override
-			public C __(C acc, O o)
-			{
-				acc.add(_._(o));
-				return acc;
-			}
-
-		}, buffer, os);
+			super(a, b);
+			this.c = c;
+		}
 	}
 
-	/**
-	 * Maps the elements of a List into a new List.
-	 * 
-	 * @param <R>
-	 *            The mapping type.
-	 * @param <O>
-	 *            The List type.
-	 * @param <C>
-	 *            The buffer List type.
-	 * @param _
-	 *            The mapping function O -> R
-	 * @param buffer
-	 *            The buffer to map into.
-	 * @param os
-	 *            The List to map.
-	 * @return A List of type C with elements mapped from os.
-	 */
-	public static <R, O, L extends List<R>> L map(
-			final _<R, O> _,
-			L buffer,
-			Iterable<O> os)
+	/** Tuple with four elements. */
+	public static class _4<A, B, C, D> extends _3<A, B, C>
 	{
-		return foldLeft(new __<$2<L, Integer>, O>()
+		/** The fourth element. */
+		public D d;
+
+		/** private Constructor. */
+		protected _4(A a, B b, C c, D d)
 		{
-			@Override
-			public $2<L, Integer> __($2<L, Integer> acc, O o)
-			{
-				if (acc.a.size() > acc.b)
-				{
-					acc.a.set(acc.b, _._(o));
-				}
-				else
-				{
-					acc.a.add(_._(o));
-				}
-
-				acc.b++;
-
-				return acc;
-			}
-
-		}, $.$(buffer, 0), os).a;
-	}
-
-	/**
-	 * Maps the elements of a List into a new List which is dynamically
-	 * allocated and returned.
-	 * 
-	 * @param <R>
-	 *            The mapping type.
-	 * @param <O>
-	 *            The List type.
-	 * @param _
-	 *            The mapping function O -> R
-	 * @param os
-	 *            The List to map.
-	 * @return A List of type R with elements mapped from os.
-	 */
-	public static <R, O> List<R> map(final _<R, O> _, List<O> os)
-	{
-		return map(_, new ArrayList<R>(os.size()), os);
-	}
-
-	/**
-	 * Maps the elements of a List into the same List.
-	 * 
-	 * @param <O>
-	 *            The List type.
-	 * @param _
-	 *            The mapping function O -> O
-	 * @param os
-	 *            The List to map.
-	 * @return The list os.
-	 */
-	public static <O> List<O> mapSelf(final _<O, O> _, List<O> os)
-	{
-		return map(_, os, os);
-	}
-
-	/**
-	 * Maps the elements of an array into a buffer array and returns it.
-	 * 
-	 * @param <R>
-	 *            The mapping type.
-	 * @param <O>
-	 *            The array type.
-	 * @param _
-	 *            The mapping function O -> R
-	 * @param buffer
-	 *            the buffer array to map into.
-	 * @param os
-	 *            The array to map.
-	 * @return The buffer.
-	 */
-	public static <R, O> R[] map(final _<R, O> _, R[] buffer, O... os)
-	{
-		map(_, Arrays.asList(buffer), Arrays.asList(os));
-		return buffer;
-	}
-
-	/**
-	 * Maps the elements of an array into a fresh allocated buffer array and
-	 * returns it.
-	 * 
-	 * @param <R>
-	 *            The mapping type.
-	 * @param <O>
-	 *            The array type.
-	 * @param _
-	 *            The mapping function O -> R
-	 * @param os
-	 *            The array to map.
-	 * @return The newly allocated array with the mapped elements.
-	 */
-	public static <R, O> R[] map(final _<R, O> _, O... os)
-	{
-		@SuppressWarnings("unchecked")
-		R[] buffer = (R[]) Array.newInstance(_.getReturnType(), os.length);
-		return map(_, buffer, os);
-	}
-
-	/**
-	 * Maps the elements of an array into itself and returns it.
-	 * 
-	 * @param <R>
-	 *            The mapping type.
-	 * @param <O>
-	 *            The array type.
-	 * @param _
-	 *            The mapping function O -> O
-	 * @param os
-	 *            The array to map.
-	 * @return os.
-	 */
-	public static <O> O[] mapSelf(final _<O, O> _, O... os)
-	{
-		return map(_, os, os);
+			super(a, b, c);
+			this.d = d;
+		}
 	}
 }

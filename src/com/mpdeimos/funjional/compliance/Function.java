@@ -1,6 +1,6 @@
 package com.mpdeimos.funjional.compliance;
 
-import com.mpdeimos.funjional._;
+import com.mpdeimos.funjional.$;
 
 /**
  * Lambda function class. Verbose notation (Java-naming standards complaint)
@@ -13,10 +13,10 @@ import com.mpdeimos.funjional._;
  * @param <O>
  *            The function argument type
  */
-public abstract class Function<R, O> extends _<R, O>
+public abstract class Function<O, R> extends $<O, R>
 {
 	@Override
-	public final R _(O o)
+	public final R $(O o)
 	{
 		return call(o);
 	}

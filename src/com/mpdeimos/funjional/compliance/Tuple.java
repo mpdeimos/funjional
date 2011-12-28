@@ -1,6 +1,6 @@
 package com.mpdeimos.funjional.compliance;
 
-import com.mpdeimos.funjional.$;
+import com.mpdeimos.funjional._;
 
 /**
  * Tuple class.
@@ -37,7 +37,7 @@ public abstract class Tuple
 	}
 
 	/** Tuple with one element. */
-	public static class Tuple1<A> extends $.$1<A>
+	public static class Tuple1<A> extends _._1<A>
 	{
 		/** private Constructor. */
 		private Tuple1(A a)
@@ -47,7 +47,7 @@ public abstract class Tuple
 	}
 
 	/** Tuple with two elements. */
-	public static class Tuple2<A, B> extends $.$2<A, B>
+	public static class Tuple2<A, B> extends _._2<A, B>
 	{
 		/** private Constructor. */
 		private Tuple2(A a, B b)
@@ -57,7 +57,7 @@ public abstract class Tuple
 	}
 
 	/** Tuple with three elements. */
-	public static class Tuple3<A, B, C> extends $.$3<A, B, C>
+	public static class Tuple3<A, B, C> extends _._3<A, B, C>
 	{
 		/** private Constructor. */
 		private Tuple3(A a, B b, C c)
@@ -67,7 +67,7 @@ public abstract class Tuple
 	}
 
 	/** Tuple with four elements. */
-	public static class Tuple4<A, B, C, D> extends $.$4<A, B, C, D>
+	public static class Tuple4<A, B, C, D> extends _._4<A, B, C, D>
 	{
 		/** private Constructor. */
 		private Tuple4(A a, B b, C c, D d)

@@ -1,6 +1,6 @@
 package com.mpdeimos.funjional.compliance;
 
-import com.mpdeimos.funjional.__;
+import com.mpdeimos.funjional.$$;
 
 /**
  * Accumulator function class. Verbose notation (Java-naming standards
@@ -14,7 +14,7 @@ import com.mpdeimos.funjional.__;
  * @param <O>
  *            The function argument type
  */
-public abstract class Accumulation<R, O> extends __<R, O>
+public abstract class Accumulation<R, O> extends $$<R, O>
 {
 	/**
 	 * The accumulator function.
@@ -28,7 +28,7 @@ public abstract class Accumulation<R, O> extends __<R, O>
 	public abstract R call(R acc, O o);
 
 	@Override
-	public R __(R acc, O o)
+	public R $(R acc, O o)
 	{
 		return call(acc, o);
 	}
