@@ -1,21 +1,61 @@
 package com.mpdeimos.funjional;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.Test;
 
-import com.mpdeimos.funjional.Fun;
-import com.mpdeimos.funjional._;
-import com.mpdeimos.funjional.__;
+import com.mpdeimos.funjional.Zip.Zip2;
 
 public class StaticTest
 {
+	@Test
+	public void testFoldLeftDirection()
+	{
+		Integer[] ints = new Integer[]{0,1,2,3,4,5,6,7,8,9};
+		_.foldLeft(new __<Zip2<Integer[], Integer>, Integer>()
+		{
+			@Override
+			public Zip2<Integer[], Integer> $(Zip2<Integer[], Integer> acc,
+					Integer o)
+			{
+				acc.a[o] = acc.b; 
+				acc.b++;
+				return acc;
+			}
+
+		}, Zip.zip(ints, 0), ints);
+		
+		for (int i = 0; i < ints.length; i++)
+		{
+			assertEquals(i, (int)ints[i]);
+		}
+	}
+	@Test
+	public void testFoldRightDirection()
+	{
+		Integer[] ints = new Integer[]{0,1,2,3,4,5,6,7,8,9};
+		_.foldRight(new __<Zip2<Integer[], Integer>, Integer>()
+		{
+			@Override
+			public Zip2<Integer[], Integer> $(Zip2<Integer[], Integer> acc,
+					Integer o)
+			{
+				acc.a[o] = acc.b;
+				acc.b++;
+				return acc;
+			}
+			
+		}, Zip.zip(ints, 0), ints);
+		
+		for (int i = 0; i < ints.length; i++)
+		{
+			assertEquals(ints.length-i-1, (int)ints[i]);
+		}
+	}
+	
 	@Test
 	public void testFoldRight()
 	{
@@ -53,12 +93,32 @@ public class StaticTest
 			public Double $(Integer o) {
 				return o+1.5;
 			}
-		}, new ArrayList<Double>(10), ints);
+		}, new ArrayList<Double>(5), ints);
+		// also tests array list expansion
 		
 		assertEquals(10, intsPlus1dot5.size());
 		for (int i = 0; i < 10; i++)
 		{
 			assertEquals(ints.get(i) +1.5, intsPlus1dot5.get(i), 0.1);
+		}
+	}
+	
+	@Test
+	public void testMapSelf()
+	{
+		// also tests buffer writing
+		
+		Integer[] ints = _.mapSelf(new _<Integer, Integer>()
+		{
+			@Override
+			public Integer $(Integer o) {
+				return o+1;
+			}
+		}, 0,1,2,3,4,5,6,7,8,9);
+		
+		for (int i = 0; i < ints.length; i++)
+		{
+			assertEquals(i+1, (int)ints[i]);
 		}
 	}
 }
