@@ -29,7 +29,7 @@ The general idea of *funjional* is bringing typesafe functional features to Java
 ### Ok, so whats that all about?
 
 Since Java is a strictly object-oriented programming language lambda functions need to be classes and typed by generics.
-Creating a new function is done by creating a new anonymous class that extends `_<R, O>` whereas `R` is the return type and `O` is the type of the function argument. As a class does not do any stuff per-se we also need to implement a function; `_` contains an abstract function `public abstract R $(O o);`taking an object of type `O` and returning and object of type `R` -- this function needs to be implemented by you.
+Creating a new function is done by creating a new anonymous class that extends `_<R, O>` whereas `R` is the return type and `O` is the type of the function argument. As a class does not do any stuff per-se we also need to implement a function; `_` contains an abstract function `public abstract R _(O o);`taking an object of type `O` and returning and object of type `R` -- this function needs to be implemented by you.
 
 ### The collection library
 
@@ -39,8 +39,8 @@ The goal of *funjional* is not only to provide a concept for defining lambda exp
 
 I got that, but for now functions do only accept one argument -- how can I pass more than one argument?
 Well, the simple answer is *you cannot*!
-The long answer: *Zip your arguments!*
-*funjional* provides a concept for zipping objects into `Zip` containers. The simplest container is `Zip1` which can be created by `Zip1 z = Zip.zip(someObject)`. The object can be accessed by `z.a`. A `Zip1` is pretty useless, so the more interesting ones are `Zip2`, `Zip3` and so on. Creation is similar -- `Zip2 z2 = Zip.zip(someObject, someOtherObject)`. Of course Zip containers are typesafe, so `Zip.zip(1, "foo")` will yield a `Zip2<Integer,String>` with its members being accessible via `z2.a` and `z2.b`.
+The long answer: *Tuple your arguments!*
+*funjional* provides a concept for tuppling objects into `$` containers. The simplest container is `$1` which can be created by `$1 z = $.$(someObject)`. The object can be accessed by `z.a`. A `$1` is pretty useless, so the more interesting ones are `$2`, `$3` and so on. Creation is similar -- `$2 z2 = $.$(someObject, someOtherObject)`. Of course Zip containers are typesafe, so `$.$(1, "foo")` will yield a `$2<Integer,String>` with its members being accessible via `z2.a` and `z2.b`.
 
 ### Example
 
@@ -48,7 +48,7 @@ The long answer: *Zip your arguments!*
 	Integer[] ints = _.map(new _<Integer, Integer>() 
 	{
 		@Override
-		public Integer $(Integer o) 
+		public Integer _(Integer o) 
 		{
 			return o+1;
 		}
@@ -57,13 +57,13 @@ The long answer: *Zip your arguments!*
 
 ### The mighty fold
 
-`fold` uses a special version of the `_` class with generic signature `_<R, Zip.Zip2<R, O>>` to provide an accumulator. For more convenient writing *funjional* delivers a subclass `__<R, O>` (note the double underscore) with an abstract method `public abstract R $(R acc, O o);` to be implemented by you.
+`fold` uses a special version of the `_` class with generic signature `_<R, Zip.Zip2<R, O>>` to provide an accumulator. For more convenient writing *funjional* delivers a subclass `__<R, O>` (note the double underscore) with an abstract method `public abstract R _(R acc, O o);` to be implemented by you.
 
 	// yields 10
 	int sum = _.foldRight(new __<Integer, Integer>()
 	{
 		@Override
-		public Integer $(Integer acc, Integer o)
+		public Integer _(Integer acc, Integer o)
 		{
 			return acc+o;
 		}
@@ -72,6 +72,7 @@ The long answer: *Zip your arguments!*
 ### The function library
 
 *funjional* also includes a function library being accessible via static methods of the class `Fun`.
+
 
 Help Developing
 ===============
