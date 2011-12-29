@@ -32,6 +32,12 @@ public abstract class $3<A, B, C, R> extends $<A, $2<B, C, R>>
 		};
 	}
 
+	@Override
+	public $<A, $<B, $<C, R>>> $()
+	{
+		return this;
+	}
+
 	/**
 	 * The lambda function implementation.
 	 * 
