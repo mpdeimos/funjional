@@ -20,7 +20,7 @@ import com.mpdeimos.funjional.compliance.Function3;
  * @param <D>
  *            The fourth function argument type
  */
-public abstract class $4<A, B, C, D, R> extends $<A, $3<B, C, D, R>>
+public abstract class $4<A, B, C, D, R> extends $<A, $<B, $<C, $<D, R>>>>
 {
 	@Override
 	public final Function3<B, C, D, R> $(final A a)

@@ -208,9 +208,4 @@ public abstract class Fun
 			}
 		};
 	}
-
-	public static $<Integer[], Integer> sum()
-	{
-		return $.<Integer, Integer> foldLeft2().$(Fun.<Integer> add(), 0);
-	}
 }

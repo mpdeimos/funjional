@@ -76,7 +76,7 @@ Since this notation - both the function declaration and the evaluation - is quit
 	int sum = $.foldRight(new $$<Integer, Integer>()
 	{
 		@Override
-		public Integer $$(Integer acc, Integer o)
+		public Integer $(Integer acc, Integer o)
 		{
 			return acc+o;
 		}

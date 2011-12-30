@@ -17,7 +17,7 @@ import com.mpdeimos.funjional.compliance.Function2;
  * @param <C>
  *            The third function argument type
  */
-public abstract class $3<A, B, C, R> extends $<A, $2<B, C, R>>
+public abstract class $3<A, B, C, R> extends $<A, $<B, $<C, R>>>
 {
 	@Override
 	public final Function2<B, C, R> $(final A a)

@@ -10,7 +10,7 @@ package com.mpdeimos.funjional;
  * @param <O>
  *            The object type.
  */
-public abstract class $$<R, O> extends $2<R, O, R>
+public abstract class $$<O, R> extends $2<R, O, R>
 {
 	// nothing specific
 }
