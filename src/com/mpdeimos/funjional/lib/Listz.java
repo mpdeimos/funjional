@@ -140,7 +140,7 @@ public class Listz
 			C buffer,
 			Iterable<O> os)
 	{
-		return foldLeft(new $$<C, O>()
+		return foldLeft(new $$<O, C>()
 		{
 			@Override
 			public C $(C acc, O o)
@@ -173,7 +173,7 @@ public class Listz
 			List<R> buffer,
 			Iterable<O> os)
 	{
-		return foldLeft(new $$<_2<List<R>, Integer>, O>()
+		return foldLeft(new $$<O, _2<List<R>, Integer>>()
 		{
 			@Override
 			public _2<List<R>, Integer> $(_2<List<R>, Integer> acc, O o)

@@ -219,7 +219,7 @@ public class Arrayz
 	public static <O> O[] tail(O... os)
 	{
 		return Arrayz.<O, _2<O[], Integer>> foldLeft().$(
-				new $$<_2<O[], Integer>, O>()
+				new $$<O, _2<O[], Integer>>()
 				{
 					@Override
 					public _2<O[], Integer> $(_2<O[], Integer> acc, O o)
@@ -235,4 +235,12 @@ public class Arrayz
 				_._((O[]) Array.newInstance(os[0].getClass(), os.length - 1), 0),
 				os).a;
 	}
+
+	// /** @return the sum over an array */
+	// public static <N extends Number> $<N[], N> sum()
+	// {
+	// return Arrayz.<N, N> foldLeft().$(
+	// Mathz.<N> add(),
+	// Mathz.<N> assimilate().$(0));
+	// }
 }

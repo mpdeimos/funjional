@@ -2,6 +2,8 @@ package com.mpdeimos.funjional;
 
 import static org.junit.Assert.assertEquals;
 
+import com.mpdeimos.funjional.lib.Arrayz;
+
 import org.junit.Test;
 
 /** Tests for composing functions. */
@@ -11,7 +13,7 @@ public class FunctionCompositionTest
 	@Test
 	public void testAdd1Mul2()
 	{
-		Integer[] ints = $.mapSelf(
+		Integer[] ints = Arrayz.mapSelf(
 				Fun.MUL(2).o(Fun.ADD(1)),
 				0,
 				1,
@@ -34,7 +36,7 @@ public class FunctionCompositionTest
 	@Test
 	public void testMul2Add1()
 	{
-		Integer[] ints = $.mapSelf(
+		Integer[] ints = Arrayz.mapSelf(
 				Fun.ADD(1).o(Fun.MUL(2)),
 				0,
 				1,

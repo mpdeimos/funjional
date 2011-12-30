@@ -14,7 +14,7 @@ import com.mpdeimos.funjional.$$;
  * @param <O>
  *            The function argument type
  */
-public abstract class Accumulation<R, O> extends $$<R, O>
+public abstract class Accumulation<O, R> extends $$<O, R>
 {
 	/**
 	 * The accumulator function.

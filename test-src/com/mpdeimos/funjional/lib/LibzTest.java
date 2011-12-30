@@ -1,7 +1,5 @@
 package com.mpdeimos.funjional.lib;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,14 +26,7 @@ public class LibzTest
 	@Test
 	public void testString()
 	{
-		Arrayz.each().$(Libz.sysout(), ints);
-	}
-
-	/** tests first. */
-	@Test
-	public void testFirstAndSecond()
-	{
-		assertEquals(1, Libz.first().$(1).$("b"));
-		assertEquals("b", Libz.second().$(1).$("b"));
+		Arrayz.each().$(Libz.sysout(), this.ints);
+		Arrayz.each().$(Libz.sysout(), this.strings);
 	}
 }
