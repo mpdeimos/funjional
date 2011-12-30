@@ -24,12 +24,11 @@ public abstract class $<O, R>
 	 */
 	public abstract R $(O o);
 
-	public $<O, R> $()
-	{
-		return this;
-	}
-
 	/**
+	 * Function composition.
+	 * 
+	 * (g o f)(x) = g(f(x))
+	 * 
 	 * Composes a new function out of this function and another function f, with
 	 * f being applied first.
 	 * 
@@ -49,6 +48,44 @@ public abstract class $<O, R>
 		};
 	}
 
+	/**
+	 * Function append.
+	 * 
+	 * (g a f)(x) = f(g(x))
+	 * 
+	 * Composes a new function out of this function and another function f, with
+	 * this function being applied first than f. Note that f takes the full
+	 * return type of this function - this
+	 * 
+	 * @param <N>
+	 * @param f
+	 * @return
+	 */
+	public <N> Function<O, N> a(final $<R, N> f)
+	{
+		return new Function<O, N>()
+		{
+			@Override
+			public N call(O o)
+			{
+				return f.$($.this.$(o));
+			}
+		};
+	}
+
+	/**
+	 * Function interception.
+	 * 
+	 * (g x f)(a) = f(g(a))
+	 * 
+	 * Composes a new function out of this function and another function f, with
+	 * this function being applied first than f. Note that f takes the full
+	 * return type of this function - this
+	 * 
+	 * @param <N>
+	 * @param f
+	 * @return
+	 */
 	public <N> Function<O, N> x(final $<R, N> f)
 	{
 		return new Function<O, N>()

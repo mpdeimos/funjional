@@ -1,10 +1,12 @@
 package com.mpdeimos.funjional.lib;
 
 import com.mpdeimos.funjional.$;
+import com.mpdeimos.funjional.$$;
 import com.mpdeimos.funjional.$2;
 import com.mpdeimos.funjional.$3;
+import com.mpdeimos.funjional._;
+import com.mpdeimos.funjional._._2;
 import com.mpdeimos.funjional.compliance.Function2;
-import com.mpdeimos.funjional.type.Option.Nil;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -97,20 +99,20 @@ public class Arrayz
 
 	public static <O> Function2<$<O, O>, O[], O[]> each()
 	{
-		Funz.<$<Nil, $<O, Nil>>, Nil, $<O[], Nil>> swap().$(
-				Arrayz.<O, Nil> foldLeft().$());
-		// return new Function2<$<O, O>, O[], O[]>()
-		// {
-		// @Override
-		// public O[] call($<O, O> f, O[] os)
-		// {
-		// Arrayz.<O, O> foldLeft().$(
-		// Funz.<O, O, O> intercept().$(Funz.<O, O> second(), f),
-		// null,
-		// os);
-		// return os;
-		// }
-		// };
+		// Funz.<$<Nil, $<O, Nil>>, Nil, $<O[], Nil>> swap().$(
+		// Arrayz.<O, Nil> foldLeft().$());
+		return new Function2<$<O, O>, O[], O[]>()
+		{
+			@Override
+			public O[] call($<O, O> f, O[] os)
+			{
+				Arrayz.<O, O> foldLeft().$(
+						Funz.<O, O, O> intercept().$(Funz.<O, O> second(), f),
+						null,
+						os);
+				return os;
+			}
+		};
 	}
 
 	// / MAP ///
@@ -211,4 +213,26 @@ public class Arrayz
 		};
 	}
 
+	// Tail
+
+	@SuppressWarnings("unchecked")
+	public static <O> O[] tail(O... os)
+	{
+		return Arrayz.<O, _2<O[], Integer>> foldLeft().$(
+				new $$<_2<O[], Integer>, O>()
+				{
+					@Override
+					public _2<O[], Integer> $(_2<O[], Integer> acc, O o)
+					{
+						if (acc.b > 0)
+						{
+							acc.a[acc.b - 1] = o;
+						}
+						acc.b++;
+						return acc;
+					}
+				}).$(
+				_._((O[]) Array.newInstance(os[0].getClass(), os.length - 1), 0),
+				os).a;
+	}
 }
