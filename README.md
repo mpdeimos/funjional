@@ -70,7 +70,7 @@ Since this notation - both the function declaration and the evaluation - is quit
 
 ### The mighty fold
 
-`fold` uses a special version of the `$` class with generic signature `$<R, $.$2<R, O>>` to provide an accumulator. For more convenient writing *funjional* delivers a subclass `$$<R, O>` with an abstract method `public abstract R $$(R acc, O o);` to be implemented by you.
+`fold` uses a special version of the `$` class with generic signature `$<R, $<R, O>>` to provide an accumulator. For more convenient writing *funjional* delivers a subclass `$$<R, O>` with an abstract method `public abstract R $$(R acc, O o);` to be implemented by you.
 
 	// yields 10
 	int sum = $.foldRight(new $$<Integer, Integer>()
